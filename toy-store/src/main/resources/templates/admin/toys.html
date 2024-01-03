@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments/admin_fragment :: head"></head>
+<body class="container">
+<header th:replace="fragments/admin_fragment :: header"></header>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tr th:each="toy : ${toys}">
+        <td><a th:text="${toy.name}" th:href="'/toys/details?toyId=' + ${toy.id}"></a></td>
+    </tr>
+</table>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments/admin_fragment :: head"></head>
+<body class="container">
+<header th:replace="fragments/admin_fragment :: header"></header>
+
+<form method="post" action="/users/create">
+
+    <div class="form-group">
+        <label> First Name
+            <input th:field="${user.firstName}" class="form-control">
+        </label>
+        <p class="error" th:errors = "${user.firstName}"></p>
+    </div>
+    <div class="form-group">
+        <label> Last Name
+            <input th:field="${user.lastName}" class="form-control">
+        </label>
+        <p class="error" th:errors = "${user.lastName}"></p>
+    </div>
+    <div class="form-group">
+        <label> Email
+            <input th:field="${user.email}" class="form-control">
+        </label>
+        <p class="error" th:errors = "${user.email}"></p>
+    </div>
+    <div class="form-group">
+        <label> Password
+            <input type = "password" th:field="${user.password}" class="form-control">
+        </label>
+        <p class="error" th:errors = "${user.password}"></p>
+    </div>
+    <div class="form-group">
+        <label> Role
+            <select th:field="${user.role}">
+                <option th:each="role : ${roles}"
+                        th:value="${role}"
+                        th:text="${role}"
+                ></option>
+            </select>
+        </label>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Add User" class="btn btn-success">
+    </div>
+</form>
+</body>
+
+</html>
