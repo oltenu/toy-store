@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title>Toy Store</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<header th:fragment="home">
+    <h1 th:text="${title}">Home</h1>
+
+    <nav>
+        <ul class="nav">
+            <li class="nav-item"><a class="nav-link" href="/static">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+        </ul>
+    </nav>
+</header>
+<header th:fragment="employee">
+    <h1 th:text="${title}">Employee</h1>
+
+    <nav>
+        <ul class="nav">
+            <li class="nav-item"><a class="nav-link" href="/employee/index">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/employee/toys">Toys</a></li>
+            <li class="nav-item"><a class="nav-link" href="/employee/create_toy">Add Toy</a></li>
+            <li class="nav-item"><a class="nav-link" href="/employee/delete_toy">Delete Toys</a></li>
+            <li class="nav-item"><a class="nav-link" href="/employee/place_order">Place Order</a></li>
+        </ul>
+    </nav>
+</header>
+<header th:fragment="customer">
+    <h1 th:text="${title}">Customer</h1>
+
+    <nav>
+        <ul class="nav">
+            <li class="nav-item"><a class="nav-link" href="/customer/index">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/customer/toys">Toys</a></li>
+            <li class="nav-item"><a class="nav-link" href="/customer/place_order">Place Order</a></li>
+        </ul>
+    </nav>
+</header>
+<header th:fragment="admin">
+    <h1 th:text="${title}">Employee</h1>
+
+    <nav>
+        <ul class="nav">
+            <li class="nav-item"><a class="nav-link" href="/admin/index">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/admin/toys">Toys</a></li>
+            <li class="nav-item"><a class="nav-link" href="/admin/users">Users</a></li>
+            <li class="nav-item"><a class="nav-link" href="/admin/create_toy">Add Toy</a></li>
+            <li class="nav-item"><a class="nav-link" href="/admin/create_user">Add User</a></li>
+            <li class="nav-item"><a class="nav-link" href="/admin/delete_toy">Delete Toys</a></li>
+            <li class="nav-item"><a class="nav-link" href="/admin/delete_user">Delete Users</a></li>
+            <li class="nav-item"><a class="nav-link" href="/admin/place_order">Place Order</a></li>
+        </ul>
+    </nav>
+</header>
+</body>
+
+</body>
+
+</html>

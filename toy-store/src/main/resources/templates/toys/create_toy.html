@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments/admin_fragment :: head"></head>
+<head th:replace="fragments :: head"></head>
 <body class="container">
-<header th:replace="fragments/admin_fragment :: header"></header>
-</body>
-<form method="post" action="/toys/details">
+<header th:replace="fragments :: ${headerName}"></header>
+
+<form method="post" action="/toys/create">
 
     <div class="form-group">
         <label> Name
@@ -25,7 +25,9 @@
         <p class="error" th:errors = "${toy.quantity}"></p>
     </div>
     <div class="form-group">
-        <input type="submit" value="Update" class="btn btn-success">
+        <input type="submit" value="Add Toy" class="btn btn-success">
     </div>
 </form>
+</body>
+
 </html>

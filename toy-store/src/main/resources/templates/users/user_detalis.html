@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments/admin_fragment :: head"></head>
+<head th:replace="fragments :: head"></head>
 <body class="container">
-<header th:replace="fragments/admin_fragment :: header"></header>
+<header th:replace="fragments :: ${headerName}"></header>
 
 <form method="post" action="/users/update">
 

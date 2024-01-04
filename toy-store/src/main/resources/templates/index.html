@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments/home_fragment :: head"></head>
+<head th:replace="fragments :: head"></head>
 <body class="container">
-    <header th:replace="fragments/home_fragment :: header"></header>
+<header th:replace="fragments :: ${headerName}"></header>
 </body>
 
 </html>
