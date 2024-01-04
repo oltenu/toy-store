@@ -1,10 +1,12 @@
 package toystore.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User extends AbstractEntity {
@@ -23,17 +25,22 @@ public class User extends AbstractEntity {
     @Size(min = 8, message = "Password must be at least 8 characters long!")
     private String password;
 
-    private String role;
+    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @JoinTable(
+            name="users_roles",
+            joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="ID")},
+            inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ID")})
+    private List<Role> roles;
 
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String password, String role) {
+    public User(String firstName, String lastName, String email, String password, List<Role> roles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.role = role;
+        this.roles = roles;
     }
 
     public String getFirstName() {
@@ -68,12 +75,12 @@ public class User extends AbstractEntity {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     @Override

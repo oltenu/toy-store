@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 public class SecurityConfiguration {
@@ -28,19 +29,32 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
                 .requestMatchers("/").permitAll()
-                .requestMatchers("/register").permitAll()
+                .requestMatchers("/register/**").permitAll()
                 .requestMatchers("/login").permitAll()
-                .requestMatchers("/orders/place-order").hasAnyRole("CUSTOMER", "EMPLOYEE", "ADMIN")
-                .requestMatchers("/toys/create-toy").hasAnyRole("EMPLOYEE", "ADMIN")
-                .requestMatchers("/toys/customer-toys").hasAnyRole("CUSTOMER")
-                .requestMatchers("/toys/delete-toy").hasAnyRole("EMPLOYEE", "ADMIN")
-                .requestMatchers("/toys/toy-details").hasAnyRole("EMPLOYEE", "ADMIN")
+                .requestMatchers("/orders/place").hasAnyRole("CUSTOMER", "EMPLOYEE", "ADMIN")
+                .requestMatchers("/orders/place/submit").hasAnyRole("CUSTOMER", "EMPLOYEE", "ADMIN")
+                .requestMatchers("/toys/create/**").hasAnyRole("EMPLOYEE", "ADMIN")
+                .requestMatchers("/toys/details/**").hasAnyRole("EMPLOYEE", "ADMIN")
+                .requestMatchers("/toys/update").hasAnyRole("EMPLOYEE", "ADMIN")
+                .requestMatchers("/toys/show").hasAnyRole("CUSTOMER")
+                .requestMatchers("/toys/delete/**").hasAnyRole("EMPLOYEE", "ADMIN")
                 .requestMatchers("/toys").hasAnyRole("EMPLOYEE", "ADMIN")
-                .requestMatchers("/users/create-user").hasRole("ADMIN")
-                .requestMatchers("/users/delete-user").hasRole("ADMIN")
-                .requestMatchers("/users/user-details").hasRole("ADMIN")
+                .requestMatchers("/users/create/**").hasRole("ADMIN")
+                .requestMatchers("/users/delete/**").hasRole("ADMIN")
+                .requestMatchers("/users/update").hasRole("ADMIN")
+                .requestMatchers("/users/details/**").hasRole("ADMIN")
                 .requestMatchers("/users").hasRole("ADMIN")
-        );
+        ).formLogin(
+                form -> form
+                        .loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .defaultSuccessUrl("/")
+                        .permitAll()
+        ).logout(
+                logout -> logout
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .permitAll()
+        );;
 
         return http.build();
     }

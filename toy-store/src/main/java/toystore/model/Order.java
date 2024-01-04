@@ -18,18 +18,13 @@ public class Order extends AbstractEntity {
     @OneToOne
     private User customer;
 
-    @OneToOne
-    @Valid
-    private DeliveryAddress deliveryAddress;
-
     public Order() {
     }
 
-    public Order(Toy toy, Integer quantity, User customer, DeliveryAddress deliveryAddress) {
+    public Order(Toy toy, Integer quantity, User customer) {
         this.toy = toy;
         this.quantity = quantity;
         this.customer = customer;
-        this.deliveryAddress = deliveryAddress;
     }
 
     public Toy getToy() {
@@ -56,21 +51,12 @@ public class Order extends AbstractEntity {
         this.customer = customer;
     }
 
-    public DeliveryAddress getDeliveryAddress() {
-        return deliveryAddress;
-    }
-
-    public void setDeliveryAddress(DeliveryAddress deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
-    }
-
     @Override
     public String toString() {
         return "Order{" +
                 "toy=" + toy +
                 ", quantity=" + quantity +
                 ", customer=" + customer +
-                ", deliveryAddress=" + deliveryAddress +
                 '}';
     }
 }
