@@ -4,7 +4,7 @@
 <body class="container">
 <header th:replace="fragments :: ${headerName}"></header>
 
-<form method="post" action="/users/create">
+<form method="post" th:action="@{/users/create/save}">
 
     <div class="form-group">
         <label> First Name
@@ -32,10 +32,10 @@
     </div>
     <div class="form-group">
         <label> Role
-            <select th:field="${user.role}">
+            <select th:field="${user.roles}">
                 <option th:each="role : ${roles}"
-                        th:value="${role}"
-                        th:text="${role}"
+                        th:value="${role.id}"
+                        th:text="${role.name}"
                 ></option>
             </select>
         </label>

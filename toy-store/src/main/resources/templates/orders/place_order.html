@@ -4,7 +4,7 @@
 <body class="container">
 <header th:replace="fragments :: ${headerName}"></header>
 
-<form method="post" action="/orders/place">
+<form method="post" th:action="@{/orders/place/submit}">
     <div class="form-group">
         <label> Select Toy
             <select th:field="${order.toy}">
@@ -22,33 +22,9 @@
         <p class="error" th:errors="${order.quantity}"></p>
     </div>
     <div class="form-group">
-        <label> Country
-            <input th:field="${order.deliveryAddress.country}" class="form-control">
-        </label>
-        <p class="error" th:errors="${order.deliveryAddress.country}"></p>
-    </div>
-    <div class="form-group">
-        <label> City
-            <input th:field="${order.deliveryAddress.city}" class="form-control">
-        </label>
-        <p class="error" th:errors="${order.deliveryAddress.city}"></p>
-    </div>
-    <div class="form-group">
-        <label> Street Name
-            <input th:field="${order.deliveryAddress.streetName}" class="form-control">
-        </label>
-        <p class="error" th:errors="${order.deliveryAddress.streetName}"></p>
-    </div>
-    <div class="form-group">
-        <label> Street Number
-            <input th:field="${order.deliveryAddress.streetNumber}" class="form-control">
-        </label>
-        <p class="error" th:errors="${order.deliveryAddress.streetNumber}"></p>
-    </div>
-    <div class="form-group">
         <input type="submit" value="Place Order" class="btn btn-success">
     </div>
 </form>
-
+<div th:text="${errors}"></div>
 </body>
 </html>

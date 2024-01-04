@@ -4,7 +4,7 @@
 <body class="container">
 <header th:replace="fragments :: ${headerName}"></header>
 
-<form method="post" action="/toys/create">
+<form method="post" th:action="@{/toys/create/save}">
 
     <div class="form-group">
         <label> Name
