@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import toystore.data.RoleRepository;
 import toystore.model.Role;
 import toystore.model.User;
+import toystore.service.RoleService;
 import toystore.service.UserService;
 
 import java.util.Arrays;
@@ -18,11 +19,11 @@ import java.util.Arrays;
 public class AuthenticationController {
 
     private final UserService userService;
-    private final RoleRepository roleRepository;
+    private final RoleService roleService;
 
-    public AuthenticationController(UserService userService, RoleRepository roleRepository){
+    public AuthenticationController(UserService userService, RoleService roleService){
         this.userService = userService;
-        this.roleRepository = roleRepository;
+        this.roleService = roleService;
     }
 
     @GetMapping("register")
@@ -51,7 +52,7 @@ public class AuthenticationController {
             return "register";
         }
 
-        Role role = roleRepository.findByName("ROLE_CUSTOMER");
+        Role role = roleService.findByName("ROLE_CUSTOMER");
         user.setRoles(Arrays.asList(role));
 
         userService.saveUser(user);
