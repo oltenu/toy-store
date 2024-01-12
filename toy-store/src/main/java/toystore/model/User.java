@@ -25,7 +25,7 @@ public class User extends AbstractEntity {
     @Size(min = 8, message = "Password must be at least 8 characters long!")
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name="users_roles",
             joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="ID")},

@@ -69,7 +69,7 @@ public class ToysController {
 
         toyService.saveToy(toy);
 
-        return "redirect:http://localhost:8080";
+        return "redirect:/toys";
     }
 
     @GetMapping("show")
