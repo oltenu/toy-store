@@ -70,6 +70,6 @@ public class OrdersController {
             return "orders/place_order";
         }
 
-        return "redirect:http://localhost:8080";
+        return "redirect:/";
     }
 }
