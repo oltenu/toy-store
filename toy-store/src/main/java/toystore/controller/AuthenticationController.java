@@ -44,14 +44,6 @@ public class AuthenticationController {
                     "There is already an account with the same email!");
         }
 
-        if(result.hasErrors()){
-            model.addAttribute(new User());
-            model.addAttribute("headerName", "home");
-            model.addAttribute("errors", "There is already an account with the same email!");
-
-            return "register";
-        }
-
         Role role = roleService.findByName("ROLE_CUSTOMER");
         user.setRoles(Arrays.asList(role));
 
