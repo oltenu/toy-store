@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<header th:replace="fragments :: ${headerName}"></header>
+
+<form method="post" th:action="@{/toys/delete/submit}">
+    <div class="form-group">
+        <th:block th:each="toy : ${toys}">
+
+            <label>
+                <span th:text="${toy.name}"></span>
+                <input type="checkbox" name="toyIds" th:value="${toy.id}" class="form-control">
+            </label>
+
+        </th:block>
+    </div>
+
+    <input type="submit" value="Delete" class="btn btn-danger">
+</form>
+
+</body>
+</html>

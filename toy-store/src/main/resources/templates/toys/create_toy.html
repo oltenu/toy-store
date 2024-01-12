@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<header th:replace="fragments :: ${headerName}"></header>
+
+<form method="post" th:action="@{/toys/create/save}">
+
+    <div class="form-group">
+        <label> Name
+            <input th:field="${toy.name}" class="form-control">
+        </label>
+        <p class="error" th:errors = "${toy.name}"></p>
+    </div>
+    <div class="form-group">
+        <label> Description
+            <input th:field="${toy.description}" class="form-control">
+        </label>
+        <p class="error" th:errors = "${toy.description}"></p>
+    </div>
+    <div class="form-group">
+        <label> Quantity
+            <input th:field="${toy.quantity}" class="form-control">
+        </label>
+        <p class="error" th:errors = "${toy.quantity}"></p>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Add Toy" class="btn btn-success">
+    </div>
+</form>
+</body>
+
+</html>
