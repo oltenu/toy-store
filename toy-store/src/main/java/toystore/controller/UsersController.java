@@ -57,7 +57,7 @@ public class UsersController {
     @PostMapping("update")
     public String updateUser(@Valid @ModelAttribute User user, @RequestParam(required = false) long userId, Model model,
                              Errors errors, Authentication authentication){
-        if(errors.hasErrors()){
+        /*if(errors.hasErrors()){
             model.addAttribute("title", "Toy: " + user.getFirstName());
             model.addAttribute("headerName", getHeaderName(authentication, userService));
             model.addAttribute(user);
@@ -65,7 +65,7 @@ public class UsersController {
             model.addAttribute("roles", roles);
 
             return "users/user_details";
-        }
+        }*/
 
         User existingUser = userService.findUserByEmail(user.getEmail());
 
@@ -104,13 +104,13 @@ public class UsersController {
 
     @PostMapping("create/save")
     public String adduser(@Valid @ModelAttribute User user, Model model, Errors errors, Authentication authentication){
-        if(errors.hasErrors()){
+        /*if(errors.hasErrors()){
             model.addAttribute("title", "Add user");
             model.addAttribute(user);
             model.addAttribute("headerName", getHeaderName(authentication, userService));
 
             return "toys/create_user";
-        }
+        }*/
 
         userService.saveUser(user);
 
