@@ -67,7 +67,7 @@ public class UsersController {
             return "users/user_details";
         }*/
 
-        User existingUser = userService.findUserByEmail(user.getEmail());
+        /*User existingUser = userService.findUserByEmail(user.getEmail());
 
         if(existingUser != null){
             model.addAttribute("title", "Toy: " + user.getFirstName());
@@ -78,7 +78,7 @@ public class UsersController {
             model.addAttribute("roles", roles);
 
             return "users/user_details";
-        }
+        }*/
 
         User dbUser = userService.findById(userId);
         dbUser.setEmail(user.getEmail());
